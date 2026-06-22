@@ -6,15 +6,13 @@ dev. Add a new provider without touching callers.
 
 ## Install
 
-Private repo — install from GitHub (pin to a tag/commit):
+Install from GitHub (pin to a tag/commit). It's a public repo, so no auth or
+token is needed — CI/hosts (Netlify, etc.) install it like any git dependency:
 
 ```bash
 npm install github:aplisay/email#v0.1.0
 # or in package.json:  "@aplisay/email": "github:aplisay/email#v0.1.0"
 ```
-
-> CI/hosts (e.g. Netlify) need read access to the private repo — see
-> [Deploying behind a private repo](#deploying-behind-a-private-repo).
 
 ## Configuration
 
@@ -85,15 +83,3 @@ npm run typecheck
 
 > `dist/` is committed so the package installs from git with no build step.
 > **Run `npm run build` before committing source changes.**
-
-## Deploying behind a private repo
-
-Because this is a private repo, anything that runs `npm install` needs read
-access:
-
-- **Netlify:** add a `GITHUB_TOKEN` (a PAT / fine-grained token with read access
-  to `aplisay/email`) in the site environment, and rewrite the git URL to use it,
-  e.g. a build-time step:
-  `git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"`.
-- Alternatively publish to GitHub Packages (`@aplisay` scope) and use an
-  `.npmrc` with the token.

@@ -83,3 +83,7 @@ npm run typecheck
 
 > `dist/` is committed so the package installs from git with no build step.
 > **Run `npm run build` before committing source changes.**
+
+## Licence
+
+MIT — see [LICENSE](./LICENSE). © 2026 Aplisay Ltd.
